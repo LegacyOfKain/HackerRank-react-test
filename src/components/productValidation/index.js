@@ -4,10 +4,16 @@ import "./index.css";
 function ProductValidation () {
   const [productName, setProductName] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [focused1, setFocused1] = React.useState(false)
+  const [focused2, setFocused2] = React.useState(false)
+
   const isProductNameValid = productName.trim() !== "";
   const isQuantityValid = quantity.trim() !== "";
 
   const isSubmitDisabled = productName.trim() === "" || quantity.trim() === "";
+
+  const onFocus1 = () => setFocused1(true)
+  const onFocus2 = () => setFocused2(true)
 
   const handleNameChange = (event) => {
     setProductName(event.target.value);
@@ -31,11 +37,12 @@ function ProductValidation () {
               type="text"
               onInput={handleNameChange}
               onBlur={handleNameChange}
+              onFocus={onFocus1}
               data-testid="name-input"
               className={`white large outlined error`}
               placeholder="Product name"
             />
-            {isProductNameValid? null : (
+            {!focused1 || isProductNameValid ? null : (
               <p className="error-text form-hint" data-testid="name-input-error">
               Product name is required
             </p>
@@ -48,10 +55,11 @@ function ProductValidation () {
               data-testid="quantity-input"
               onInput={handleQuantityChange}
               onBlur={null}
+              onFocus={onFocus2}
               className={`white large outlined error`}
               placeholder="Quantity"
             />
-            {isQuantityValid? null : (
+            {!focused2 || isQuantityValid ? null : (
                <p className="error-text form-hint" data-testid="quantity-input-error">
                Quantity is required
               </p>
