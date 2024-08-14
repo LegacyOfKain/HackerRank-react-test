@@ -14,6 +14,8 @@ test('initial UI is rendered as expected', () => {
 
     expect(getByTestId('name-input').value).toBeFalsy();
     expect(getByTestId('quantity-input').value).toBeFalsy();
+    expect(queryByTestId('name-input-error')).toBeFalsy();
+    expect(queryByTestId('quantity-input-error')).toBeFalsy();
     expect(getByTestId('submit-button').disabled).toBeTruthy();
 });
 
