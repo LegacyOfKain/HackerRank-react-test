@@ -17,10 +17,12 @@ function ProductValidation () {
 
   const handleNameChange = (event) => {
     setProductName(event.target.value);
+    setFocused1(true);
   };
 
   const handleQuantityChange = (event) => {
     setQuantity(event.target.value);
+    setFocused2(true);
   };
 
   // const handleSubmit = (event) => {
@@ -38,6 +40,7 @@ function ProductValidation () {
               onInput={handleNameChange}
               onBlur={handleNameChange}
               onFocus={onFocus1}
+              onChange={onFocus1}
               data-testid="name-input"
               className={`white large outlined error`}
               placeholder="Product name"
@@ -56,6 +59,7 @@ function ProductValidation () {
               onInput={handleQuantityChange}
               onBlur={null}
               onFocus={onFocus2}
+              onChange={onFocus2}
               className={`white large outlined error`}
               placeholder="Quantity"
             />
